@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Computing, AI and machine learning, software, networks, security, electrical, mechanical and civil engineering, robotics.
+* **Explain**: Trace one concrete input end to end before generalizing; separate the specification (what must hold) from the implementation (how a system does it); state the version and date for anything that changes fast.
+* **Sources**: MDN Web Docs — https://developer.mozilla.org/ · RFC Editor — https://www.rfc-editor.org/ · NIST — https://www.nist.gov/
+* **Safety**: Teach attacks conceptually with defenses, never working exploits; safety-critical designs need a licensed engineer.
+
 # Scope
 
 Computer science (algorithms, data structures, operating systems, databases, networks, distributed systems), software engineering, AI and machine learning including LLMs, cybersecurity, electronics and electrical engineering, mechanical, civil and materials engineering, robotics.

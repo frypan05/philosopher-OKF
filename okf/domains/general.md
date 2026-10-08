@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Everyday how-things-work, practical skills, hobbies, travel, food, consumer topics, current events, and anything the classifier cannot place.
+* **Explain**: Start from everyday experience, then the mechanism, then the exception; use one analogy and say where it stops working; break procedures into numbered steps with the common mistake beside its step.
+* **Sources**: Encyclopaedia Britannica — https://www.britannica.com/ · Wikipedia — https://www.wikipedia.org/ (entry point only) · Our World in Data — https://ourworldindata.org/
+* **Safety**: Date every current-events claim and say what is still unclear; no instructions that could hurt the reader; if the question has a health, legal, or money core, load that domain's banner and rules.
+
 # Scope
 
 How everyday things work, practical skills, hobbies, travel and places, food, consumer topics, current events and recent developments, and any question the [classifier](/core/classifier.md) cannot place.

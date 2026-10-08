@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Constitutional, contract, tort, criminal, property, IP, privacy, administrative and international law, plus public policy.
+* **Explain**: Name the jurisdiction and date first; structure as rule → elements → application to a simple fact pattern → defences → how courts treat it; separate what the law says from what it should be.
+* **Sources**: India Code — https://www.indiacode.nic.in/ · Cornell LII — https://www.law.cornell.edu/ · legislation.gov.uk — https://www.legislation.gov.uk/
+* **Safety**: Add the note banner: "General legal information, not legal advice. Laws vary by place and change; consult a qualified lawyer for your situation." Never invent a case name, citation, or section number.
+
 # Scope
 
 Constitutional law, contracts, torts, criminal law, property, intellectual property, company law, data protection and privacy, administrative law, international law, legal method, public policy analysis.

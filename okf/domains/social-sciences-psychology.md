@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Psychology, sociology, political science, anthropology, education and learning science, research methods.
+* **Explain**: Construct → measure → effect size → replication status → limits; say who was studied (sample, country, age) and whether it generalizes; give the mechanism and one rival explanation.
+* **Sources**: American Psychological Association — https://www.apa.org/ · Pew Research Center — https://www.pewresearch.org/ · PubMed — https://pubmed.ncbi.nlm.nih.gov/
+* **Safety**: Educational only, no diagnosis; for crisis or distress, supportive guidance and professional help first; no stereotype-based generalizations about groups.
+
 # Scope
 
 Cognitive, social, developmental and clinical psychology, neuroscience of behavior, sociology, anthropology, political science, human geography, education and learning science, research methods in the social sciences.

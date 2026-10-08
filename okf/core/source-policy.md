@@ -26,7 +26,7 @@ Each [domain](/domains/index.md) lists its preferred hosts.
 
 * In text: `<a class="src" href="#rN">[Section 2.1]</a>` right after the claim. Name the part of the source, not just the source.
 * In References: `<li id="rN"><a class="t" href="URL">Title</a><span class="d">What this source supports.</span></li>`.
-* Counts: brief 2 to 3, standard 5 to 8, deep 8 to 15.
+* Counts: hard caps set by [audience and depth](/core/audience-depth.md) — brief 2, standard 5, deep 10.
 * Every entry in References must be cited at least once in the text, and every tag must resolve.
 * Quote at most one short phrase per source. Paraphrase everything else.
 

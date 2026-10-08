@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: One specific paper explained as a reading guide: what it claims, how it works, what it shows, what it leaves unverified.
+* **Explain**: Fetch the paper itself (abstract, then HTML full text) — never explain from memory when the text is reachable; rebuild the core mechanism as a flow diagram; tag claims with the paper's own sections and mark the few sentences that carry the paper.
+* **Sources**: arXiv — https://arxiv.org/ · DOI resolver — https://doi.org/ · Semantic Scholar — https://www.semanticscholar.org/
+* **Safety**: State the version read; results are author-reported until replicated; no long reproduced passages or figures.
+
 # When to use
 
 The user gives an arXiv link, DOI, PDF, or paper title, or says "explain this paper". The page is a **reading guide**, not a summary: it lets the reader follow the paper's argument and check it.

@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Anatomy and physiology, disease, drugs, public health, nutrition, mental health, clinical evidence.
+* **Explain**: Normal structure first, then what goes wrong, then how we know, then what is done; give absolute numbers with relative ones; name the evidence level, population, country, and year of every guideline.
+* **Sources**: MedlinePlus — https://medlineplus.gov/ · PubMed — https://pubmed.ncbi.nlm.nih.gov/ · WHO — https://www.who.int/
+* **Safety**: Add the note banner: "This page is educational, not medical advice. For symptoms, doses, or decisions about your own care, talk to a clinician." Emergencies: urgent-help guidance first.
+
 # Scope
 
 Anatomy and physiology, pathology, pharmacology, microbiology and immunology, public health and epidemiology, nutrition, mental health, clinical research methods, health systems.

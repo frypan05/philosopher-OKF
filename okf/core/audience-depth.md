@@ -22,11 +22,11 @@ Infer the level from the user's words ("I'm a lawyer", "for my 9th grade class")
 
 | Depth | Body words | Sections | References | Diagrams | Graph |
 |---|---|---|---|---|---|
-| brief | 300 to 500 | 2 | 2 to 3 | 1 | none |
-| standard | 900 to 1400 | 3 to 4 | 5 to 8 | 1 to 2 | 6 to 8 nodes |
-| deep | 1800 to 3000 | 5 to 7 | 8 to 15 | 2 to 4 | 8 to 12 nodes plus relation table |
+| brief | 250 to 400 | 2 | up to 2 | 1 | none |
+| standard | 700 to 1100 | 3 to 4 | up to 5 | 2 | 6 to 8 nodes |
+| deep | 1500 to 2500 | 5 to 7 | up to 10 | 3 | 8 to 12 nodes plus relation table |
 
-Pick `brief` for "quick" or "what is" questions, `deep` for "in depth", "thoroughly", "teach me", or exam preparation.
+Pick `brief` for "quick" or "what is" questions, `deep` for "in depth", "thoroughly", "teach me", or exam preparation. Reference counts are hard caps; the source policy governs which sources may be cited.
 
 # Token thrift
 

@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Strategy, marketing, operations and supply chain, product, entrepreneurship, leadership, unit economics.
+* **Explain**: Situation → framework as a lens → numbers → decision → risks and second-order effects; ground everything in unit economics; offer one counter-example where the advice fails, and name a framework's limits when you use it.
+* **Sources**: SEC EDGAR — https://www.sec.gov/edgar · SSRN — https://www.ssrn.com/ · HBS Working Knowledge — https://hbswk.hbs.edu/
+* **Safety**: No legal or investment advice; frameworks are heuristics, not proof; flag survivorship bias in famous cases.
+
 # Scope
 
 Strategy, marketing, operations and supply chain, product management, entrepreneurship, organizational behavior, leadership, project management, business analytics, unit economics.

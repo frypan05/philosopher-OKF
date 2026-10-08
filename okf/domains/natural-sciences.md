@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Physics, astronomy, chemistry, biology, earth science, climate and environment.
+* **Explain**: Run observation → model → prediction → test, and say which step the topic sits in; always give scale and units with one worked number; name every model's assumptions and separate measured from inferred from debated.
+* **Sources**: NASA — https://www.nasa.gov/ · NIST CODATA — https://physics.nist.gov/cuu/Constants/ · NOAA — https://www.noaa.gov/
+* **Safety**: No synthesis routes, enhancement methods, or quantities for harmful agents; contested findings get the range of views.
+
 # Scope
 
 Classical and modern physics, astronomy and cosmology, chemistry (general, organic, physical), biology (cell, genetics, evolution, ecology), earth science, climate and environment.

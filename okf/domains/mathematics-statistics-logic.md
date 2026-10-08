@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Arithmetic to analysis, linear algebra, discrete maths, geometry, probability, statistics, formal logic and set theory.
+* **Explain**: Motivation → definition → example → non-example → result → proof sketch; work one small number case before any symbol; define every symbol at first use and keep notation constant.
+* **Sources**: NIST DLMF — https://dlmf.nist.gov/ · MIT OpenCourseWare — https://ocw.mit.edu/ · NIST/SEMATECH e-Handbook — https://www.itl.nist.gov/div898/handbook/
+* **Safety**: A p-value is not the probability the hypothesis is true; recompute every numerical example step by step, never guess.
+
 # Scope
 
 Arithmetic to analysis, linear algebra, discrete mathematics, number theory, geometry, probability, statistics and data analysis, formal logic and set theory.

@@ -4,6 +4,10 @@ One folder that teaches any model how to explain **any topic** as a single, whit
 
 The knowledge lives in an [Open Knowledge Format](https://okf.md/spec/) (OKF) bundle: plain Markdown with YAML frontmatter, no SDK, any model can read it.
 
+![Example Output](image.png)
+![E-1](image_2.png)
+![E-2](image_1.png)
+
 ## Layout
 
 ```
@@ -25,10 +29,10 @@ Technology and engineering · Medical and health · Natural sciences · Mathemat
 
 ## How a model uses it
 
-1. Reads `okf/core/workflow.md` (the 8-step procedure and a load table).
+1. Reads `okf/core/workflow.md` (the 8-step procedure, lazy load table, token budget).
 2. Classifies the question (`core/classifier.md`) into one primary domain.
-3. Loads only what the requested depth needs: **brief** about 3 files, **standard** about 5, **deep** about 7. This keeps token use low.
-4. Writes `<topic>.html`. The user opens it in a browser.
+3. Loads only what the depth needs: **brief** = template + the domain's `# Quick card` (~3 reads), **standard** adds source policy and depth policy, **deep** adds the graph method and the full domain file. Research is capped per depth (brief 2 searches / 0 fetches, standard 4 / 2, deep 8 / 4), and fetched pages are noted, not re-read.
+4. Writes `<topic>.html` in one call. The user opens it in a browser.
 
 ## Use it
 
@@ -62,6 +66,7 @@ Checks the three OKF rules (frontmatter, non-empty `type`, reserved files), that
 
 ## Known limits
 
+* **Token targets per run** (whole context, including research and the written page): **brief under 12k, standard under 25k, deep under 45k**. The levers are the workflow's research caps, the lazy load table, domain Quick cards, and writing the HTML in a single call. A run that skips fetched pages in favour of notes will land well under these numbers; a run that pulls several full documents will not.
 * Source lists point to host-level addresses of well-established sites. They were not link-checked from the build environment, so run a link checker in CI before publishing.
 * The sample page was built from the paper's public abstract record and the section list, and is marked as such. Check figures against the full text.
 * Models without web access can only cite from memory. The source policy makes them say so on the page instead of inventing links.

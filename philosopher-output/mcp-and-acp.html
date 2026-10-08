@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCP and ACP: two protocols that make AI programs talk</title><style>
+:root{--ink:#1d1c1b;--mut:#6c6863;--line:#e6e3de;--hl:#fde7c4;--ac:#5b4fc7;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--serif:"Source Serif 4",Charter,"Iowan Old Style",Georgia,serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#f6f6f5;color:var(--ink);font:17px/1.85 var(--serif)}
+.sheet{max-width:56rem;margin:0 auto;background:#fff;padding:3.5rem 1.25rem 4rem}
+.col{max-width:34rem;margin:0 auto}
+.eyebrow,.cap,figcaption,th,summary,.node,.bar,.src{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em}
+.eyebrow{font-size:.62rem;color:var(--mut);text-align:center}
+header{text-align:center}
+h1{font-weight:400;font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.12;margin:1rem 0 1.4rem}
+.deck{color:var(--mut);font-size:.95rem;line-height:1.9;margin:0 auto 1.3rem}
+.orig{font:.7rem var(--mono);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+hr{border:0;border-top:1px solid var(--mut);width:1.2rem;margin:3rem auto}
+h2{font-size:1rem;margin:3.2rem 0 1rem}h3{font-size:.95rem;font-style:italic;margin:2rem 0 .6rem}
+p,li,dd{font-size:.95rem}p{margin:0 0 1.25rem;text-align:justify;hyphens:auto}
+mark{background:var(--hl);color:inherit;padding:.1em .2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+a{color:inherit}a.src{font-size:.58rem;color:var(--mut);text-decoration:none;border-bottom:1px dotted var(--mut);white-space:nowrap}
+.note{font:.78rem/1.6 var(--mono);color:var(--mut);border-left:2px solid var(--line);padding:.2rem .8rem;margin:1.5rem 0}
+figure{margin:2.5rem 0;text-align:center}img{max-width:100%;height:auto}
+figcaption,.cap{font-size:.6rem;line-height:1.5;color:var(--mut);margin-top:.8rem}
+.flow{display:flex;flex-wrap:wrap;justify-content:center;gap:1.8rem 1.6rem;margin:1rem 0}
+.node{position:relative;border:1px solid #cfcaf0;background:#f3f2fc;border-radius:8px;padding:.6rem .75rem;font-size:.62rem;line-height:1.4;min-width:6.5rem}
+.node small{display:block;color:var(--mut);font-size:.55rem}
+.node.in{border-color:#f0c9a0;background:#fdf1e3}.node.fz{border-color:#d9d6d1;background:#faf9f8}
+.node:not(:last-child):after{content:"\2192";position:absolute;right:-1.25rem;top:50%;transform:translateY(-50%);color:var(--ac);font-size:.9rem}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.5rem 0}
+th,td{padding:.5rem .6rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:.58rem;color:var(--mut)}
+.bar{display:grid;grid-template-columns:7rem 1fr 2.5rem;gap:.6rem;align-items:center;font-size:.62rem;margin:.4rem 0}
+.bar i{height:.55rem;border-radius:2px;background:linear-gradient(90deg,var(--ac) var(--v),#eee 0)}
+.tl{list-style:none;margin:1.5rem 0;padding:0 0 0 1.1rem;border-left:1px solid var(--line)}
+.tl li{position:relative;margin:0 0 1rem}
+.tl li:before{content:"";position:absolute;left:-1.45rem;top:.7em;width:.55rem;height:.55rem;border-radius:50%;background:#fff;border:1px solid var(--ac)}
+.tl b{font:.65rem var(--mono);letter-spacing:.08em;margin-right:.6rem}
+.kg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin:1.5rem 0}
+.kg>div{display:flex;flex-direction:column;gap:.5rem;position:relative}
+.kg>div+div:before{content:"\2192";position:absolute;left:-1.2rem;top:50%;color:var(--ac)}
+.kg h4{margin:0;font:.58rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);text-align:center}
+.kg a{border:1px solid var(--line);border-radius:6px;padding:.4rem .6rem;font-size:.8rem;text-align:center;text-decoration:none}
+.kg .me{border-color:var(--ac);background:#f3f2fc}
+.eq{text-align:center;font-size:1.05rem;margin:1.5rem 0}
+pre{overflow:auto;background:#f6f6f5;border:1px solid var(--line);border-radius:6px;padding:1rem;font:.78rem/1.6 var(--mono)}code{font-family:var(--mono);font-size:.85em}
+details{border-top:1px solid var(--line);padding:.7rem 0}summary{cursor:pointer;font-size:.62rem}
+.refs{list-style:none;counter-reset:r;padding:0;margin:1.5rem 0}
+.refs li{counter-increment:r;position:relative;padding:1rem 0 1rem 2.2rem;border-top:1px solid var(--line)}
+.refs li:before{content:counter(r) ".";position:absolute;left:0;top:1.2rem;font:.6rem var(--mono);color:var(--mut)}
+.refs a.t{font-weight:700;font-size:.9rem;text-decoration:none}
+.refs .d{display:block;font-size:.75rem;line-height:1.6;color:var(--mut)}
+footer{text-align:center;font:.6rem var(--mono);color:var(--mut);margin-top:3rem}
+@media(min-width:900px){figure>.flow{margin-left:-10rem;margin-right:-10rem}}
+@media(max-width:560px){.kg{grid-template-columns:1fr}.kg>div+div:before{content:"\2193";left:50%;top:-1.3rem}.bar{grid-template-columns:5rem 1fr 2rem}}
+@media(max-width:820px){.flow{flex-direction:column;align-items:center}.node:not(:last-child):after{content:"\2193";right:auto;left:50%;top:auto;bottom:-1.4rem;transform:translateX(-50%)}}
+@media print{body{background:#fff}.sheet{padding:0}.orig{display:none}}
+</style></head>
+<body><div class="sheet"><div class="col">
+
+<header id="top">
+  <div class="eyebrow">Technology &amp; Engineering · Deep</div>
+  <h1>MCP and ACP: two protocols that make AI programs talk</h1>
+  <p class="deck">Both are thin layers of newline-delimited JSON that let one program drive another, and both exist so nobody has to write a custom integration for every pair of tools. This page shows what each protocol connects, what actually travels over the wire, and where the two plug into each other inside a coding agent.</p>
+  <a class="orig" href="https://modelcontextprotocol.io/docs/getting-started/intro">Read the original MCP introduction ↗</a>
+</header>
+<hr>
+
+<figure><div class="flow">
+  <div class="node in">User<small>writes one prompt</small></div>
+  <div class="node">Editor<small>ACP client</small></div>
+  <div class="node">Agent<small>ACP server, MCP client</small></div>
+  <div class="node fz">MCP servers<small>tools and data</small></div>
+</div>
+<figcaption>One conversation crosses two protocols: the editor speaks ACP to the agent, and the agent speaks MCP to its tools.</figcaption></figure>
+
+<h2 id="s1">Two protocols, one problem: nobody wants N × M integrations</h2>
+<p>Before any standard existed, connecting an AI application to an external service meant writing bespoke glue for each pair: one integration for your editor talking to one agent, another for that agent talking to GitHub, a third for the database, and so on. With <em>N</em> applications and <em>M</em> tools, the work grows as <em>N × M</em>. Both MCP and ACP attack this multiplication, but at different layers of the stack. <a class="src" href="#r1">[Introduction]</a></p>
+<p><strong>MCP</strong> (Model Context Protocol) connects an AI application to external systems: files, databases, APIs, browsers. Its own documentation calls it "a USB-C port for AI applications." <strong>ACP</strong> (Agent Client Protocol) connects a code editor to an autonomous coding agent: the program that reads your repository, plans edits, runs commands, and reports back. <a class="src" href="#r4">[ACP introduction]</a></p>
+<p>Underneath, both are dialects of <strong>JSON-RPC 2.0</strong>, a minimal messaging rule: every message is a UTF-8 JSON object that is either a <em>request</em> (carries an <code>id</code> and a <code>method</code>, expects a response echoing that <code>id</code>), a <em>response</em> (carries the same <code>id</code> plus a <code>result</code> or <code>error</code>), or a <em>notification</em> (no <code>id</code>, one-way, never answered). Nothing else is required: no schemas in the envelope, no session tokens, no streaming format. <a class="src" href="#r10">[JSON-RPC]</a></p>
+<table><tr><th>Dimension</th><th>MCP</th><th>ACP</th></tr>
+<tr><td>Connects</td><td>AI app ↔ tools and data</td><td>Editor ↔ coding agent</td></tr>
+<tr><td>Core unit</td><td>Tool, resource, prompt (stateless calls)</td><td>Session: a long, stateful conversation turn</td></tr>
+<tr><td>Who calls whom</td><td>Client sends requests; server answers (recent spec: servers do not initiate requests)</td><td>Bidirectional: agent sends streaming notifications and can call the editor back</td></tr>
+<tr><td>Origin</td><td>Anthropic, open-sourced November 2024</td><td>Zed, in collaboration with Google, 2025</td></tr>
+<tr><td>Analogy</td><td>USB-C for peripherals</td><td>LSP (Language Server Protocol), but for agents</td></tr></table>
+<p><mark>MCP standardizes the tool plane; ACP standardizes the conversation plane.</mark> An agent that codes uses both at once, which is why they are easy to confuse.</p>
+
+<h2 id="s2">MCP is a pipe with newline-delimited JSON, wrapped around a small set of primitives</h2>
+<p>An MCP deployment has three roles. The <strong>host</strong> is the AI application (Claude Code, VS Code, ChatGPT). For every configured server the host instantiates one <strong>client</strong>, and each client holds a dedicated connection to one <strong>server</strong> — the program that actually knows how to touch the filesystem, query the database, or call an API. <a class="src" href="#r2">[Architecture]</a></p>
+<p>How that connection works is the <em>transport layer</em>, and there are exactly two standard answers. <strong>Stdio</strong>: the host spawns the server as a child process and writes one JSON-RPC message per line into its stdin; the server replies on stdout, also one message per line, and may write human-oriented logs to stderr, which the host may capture or ignore. There is no network, no port, no handshake beyond the protocol itself. <strong>Streamable HTTP</strong>: each message is an HTTP POST to a single MCP endpoint, with the reply arriving either as a plain JSON object or as a request-scoped <code>text/event-stream</code> for long-running work; authentication rides on standard HTTP headers. Protocol semantics are identical on both bindings — only framing and delivery change. <a class="src" href="#r3">[Transport spec]</a></p>
+<p>Message direction is deliberately asymmetric: clients send requests and notifications, servers send responses and notifications, and nothing else exists. Cancellation follows the binding — a <code>notifications/cancelled</code> message on stdio, closing the response stream on HTTP. <a class="src" href="#r3">[Transport spec]</a></p>
+<figure><div class="flow">
+  <div class="node in">Spawn<small>host starts child process</small></div>
+  <div class="node">server/discover<small>versions and capabilities</small></div>
+  <div class="node">tools/list<small>names and JSON Schemas</small></div>
+  <div class="node fz">tools/call<small>arguments in, content out</small></div>
+</div>
+<figcaption>The MCP data layer in order: discovery, then listing, then execution — all plain request/response pairs.</figcaption></figure>
+<p>The <em>data layer</em> defines what the messages mean. Servers expose three <strong>primitives</strong>: <strong>tools</strong> (executable functions with a JSON Schema for arguments — the ones the model decides to call), <strong>resources</strong> (readable data such as a file's contents or a database schema), and <strong>prompts</strong> (reusable templates for structuring conversations). Each has discovery methods (<code>tools/list</code>, <code>resources/list</code>), and tools add <code>tools/call</code> for execution. Clients discover what a server supports with <code>server/discover</code>, which returns the supported protocol versions and a capabilities object, for example <code>{"tools": {"listChanged": true}}</code>. Every later request also carries the protocol version and the client's own capabilities in a metadata field, so the design can treat requests as self-contained. <a class="src" href="#r2">[Architecture]</a></p>
+<p>A concrete turn looks like this — first the listing, then one call:</p>
+<pre><code>--&gt; {"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}
+&lt;-  {"jsonrpc":"2.0","id":2,"result":{"tools":[
+      {"name":"weather_current","description":"Current weather...",
+       "inputSchema":{"type":"object","properties":
+         {"location":{"type":"string"}},"required":["location"]}}]}}
+--&gt; {"jsonrpc":"2.0","id":3,"method":"tools/call",
+     "params":{"name":"weather_current","arguments":{"location":"San Francisco"}}}
+&lt;-  {"jsonrpc":"2.0","id":3,"result":{"content":[
+      {"type":"text","text":"68°F, partly cloudy..."}]}}</code></pre>
+<p>Tool results are arrays of typed content blocks — text, images, embedded resources — not bare strings, so a server can return a screenshot next to a sentence. Servers can also announce change: after a client opens a subscription stream asking for <code>toolsListChanged</code>, the server emits a one-way <code>notifications/tools/list_changed</code> whenever its tool set changes, and the client reacts by listing again. <a class="src" href="#r2">[Architecture]</a></p>
+
+<h2 id="s3">ACP turns one user message into a long, cancellable stream of typed events</h2>
+<p>ACP's setup is simpler to state: the editor boots the agent as a subprocess on demand, and everything flows over stdin/stdout as newline-delimited JSON. Messages must not contain embedded newlines; stdout carries nothing but valid ACP messages; stderr is free for logs. One connection multiplexes several concurrent sessions, so two threads of thought can run side by side. <a class="src" href="#r7">[ACP transports]</a></p>
+<p>Every connection begins with an <code>initialize</code> request. The client names the newest protocol version it knows (a single integer — breaking changes bump it) and its capabilities, such as whether it can serve file reads, file writes, and terminal methods. The agent answers with the version it will speak and its own capabilities: whether it can load old sessions, and what content its prompts accept (text always; images, audio, embedded context optionally). If the two cannot agree on a version, the client closes the connection and tells the user. <a class="src" href="#r8">[Initialization]</a></p>
+<pre><code>--&gt; {"jsonrpc":"2.0","id":0,"method":"initialize","params":{
+      "protocolVersion":1,
+      "clientCapabilities":{"fs":{"readTextFile":true,"writeTextFile":true},
+                            "terminal":true}}}
+&lt;-  {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":1,
+      "agentCapabilities":{"loadSession":true,
+        "promptCapabilities":{"image":true}}}}</code></pre>
+<p>Then comes the shape that makes ACP different from MCP: a <strong>prompt turn</strong>. The client sends <code>session/prompt</code> with content blocks; that single request stays open — a pending JSON-RPC request — while the agent streams progress back as <code>session/update</code> notifications, each tagged with a variant field. The variants are the editor's UI vocabulary: <code>agent_message_chunk</code> (streamed answer text), <code>agent_thought_chunk</code> (reasoning), <code>tool_call</code> and <code>tool_call_update</code> (a tool appearing, moving to <code>in_progress</code>, finishing with content), <code>plan</code> (the to-do list the agent is following), <code>usage_update</code> (tokens used and dollars spent), plus mode, slash-command, and session metadata updates. Only when the work ends does the agent answer the original request with a <code>stopReason</code> such as <code>end_turn</code>, <code>max_tokens</code>, <code>refusal</code>, or <code>cancelled</code>. <a class="src" href="#r9">[Prompt turn]</a></p>
+<figure><div class="flow">
+  <div class="node in">session/prompt<small>user message, request stays open</small></div>
+  <div class="node">session/update<small>plan, chunks, tool_call</small></div>
+  <div class="node">request_permission<small>agent asks the editor</small></div>
+  <div class="node">tool_call_update<small>in_progress → completed</small></div>
+  <div class="node fz">stopReason<small>end_turn closes the request</small></div>
+</div>
+<figcaption>One ACP turn: a single request answered at the end, with everything in between arriving as notifications.</figcaption></figure>
+<p>Two design choices carry most of ACP's weight. First, traffic is <strong>bidirectional</strong>. While the prompt request is pending, the agent can issue its own requests back to the editor: <code>session/request_permission</code> before running a dangerous command, <code>fs/read_text_file</code> and <code>fs/write_text_file</code> to touch the workspace through the editor rather than directly, <code>terminal/create</code> to run shell commands in a managed pane, and <code>elicitation/create</code> to ask the user a structured question. The agent never needs its own filesystem privileges — the editor is the gatekeeper. <a class="src" href="#r6">[ACP overview]</a></p>
+<p>Second, interruption is first-class. The client may send <code>session/cancel</code> at any moment; it then marks unfinished tool calls as cancelled and answers any pending permission requests with a <code>cancelled</code> outcome, while the agent must abort model calls and in-flight tools and — critically — must convert whatever exception its libraries throw into the meaningful <code>cancelled</code> stop reason, because editors display raw errors to users. <a class="src" href="#r9">[Prompt turn]</a></p>
+
+<h2 id="s4">The two protocols meet inside the agent</h2>
+<p>An ACP agent is typically also an MCP client. When the editor forwards your prompt, it passes along the configuration of the MCP servers you have set up, and the agent connects to them itself — that is how your filesystem, Sentry, or Postgres tools become visible to a Gemini or Claude agent running under ACP. If the editor wants to offer its <em>own</em> tools to such an agent, it does not try to run MCP and ACP on one socket: it starts a small MCP server proxy that tunnels MCP requests back to the editor. <a class="src" href="#r5">[ACP architecture]</a></p>
+<p>ACP was also built to reuse MCP's homework: it is JSON-RPC-based and re-uses MCP's JSON types wherever possible so integrators do not maintain two representations of the same content, and agents advertise their MCP transport support (<code>http</code>, <code>sse</code>) during initialization. <a class="src" href="#r5">[ACP architecture]</a> <a class="src" href="#r8">[Initialization]</a></p>
+<table><tr><th>Choose</th><th>When</th><th>Cost</th></tr>
+<tr><td>MCP</td><td>You are exposing a capability (query, read, act) to any AI application</td><td>No notion of a conversation; you manage state yourself</td></tr>
+<tr><td>ACP</td><td>You are building an editor UI over a stateful, streaming, permission-asking agent</td><td>Heavier session machinery; smaller ecosystem than MCP</td></tr>
+<tr><td>Both</td><td>Every serious coding agent: ACP to the editor, MCP to the tools</td><td>Two specs to keep up with</td></tr></table>
+
+<h2 id="s5">Their histories show two different paths to legitimacy</h2>
+<ol class="tl">
+<li><b>NOV 2024</b>Anthropic open-sources MCP as an internal project turned public standard. <a class="src" href="#r13">[LF press]</a></li>
+<li><b>SEP 2025</b>Google's Gemini CLI becomes the reference ACP agent in Zed, the first proof the editor-and-agent split works. <a class="src" href="#r12">[Zed ACP]</a></li>
+<li><b>OCT 2025</b>Claude Code arrives in Zed over ACP, through a dedicated adapter. <a class="src" href="#r12">[Zed ACP]</a></li>
+<li><b>DEC 2025</b>Anthropic donates MCP to the Agentic AI Foundation under the Linux Foundation, co-founded with Block and OpenAI; MCP reports 97M+ monthly SDK downloads and roughly 10,000 published servers. <a class="src" href="#r11">[AAIF announcement]</a></li>
+<li><b>NOW</b>MCP's specification is dated 2026-07-28 and ACP ships a stable v1 with a v2 draft published for review. <a class="src" href="#r3">[Transport spec]</a> <a class="src" href="#r14">[v2 draft]</a></li>
+</ol>
+<p>The pattern is the opposite of each other: MCP began as one company's protocol and spent a year buying neutrality through a foundation; ACP began as one editor's protocol and grew by getting rival editors and agents to adopt it — its ecosystem now lists Zed, JetBrains, VS Code, Emacs and Neovim as clients, and Claude, Codex, Gemini CLI and others as agents. <a class="src" href="#r12">[Zed ACP]</a></p>
+
+<h2>How the ideas connect</h2>
+<div class="kg">
+  <div><h4>Needs first</h4><a href="#s1">JSON-RPC 2.0</a><a href="#s2">Pipes and subprocesses</a><a href="#r4">LSP precedent</a></div>
+  <div><h4>This topic</h4><a class="me" href="#top">MCP and ACP</a><a href="#s2">Primitives: tools, resources, prompts</a><a href="#s3">Typed session updates</a><a href="#s3">Capability negotiation</a></div>
+  <div><h4>Leads to</h4><a href="#s4">Tool registries and connectors</a><a href="#s4">Editor-agnostic agents</a><a href="#s5">Vendor-neutral governance</a></div>
+</div>
+<table><tr><th>From</th><th>Relation</th><th>To</th></tr>
+<tr><td>Pipes and subprocesses</td><td>enables</td><td>stdio transport in both protocols</td></tr>
+<tr><td>JSON-RPC 2.0</td><td>formalized-by (from the protocol's view)</td><td>MCP and ACP message format</td></tr>
+<tr><td>LSP precedent</td><td>enables</td><td>ACP's editor/agent split</td></tr>
+<tr><td>Primitives</td><td>part-of</td><td>MCP data layer</td></tr>
+<tr><td>Capability negotiation</td><td>part-of</td><td>MCP discovery and ACP initialize</td></tr>
+<tr><td>Session updates</td><td>part-of</td><td>ACP prompt turn</td></tr>
+<tr><td>ACP</td><td>requires</td><td>MCP (agents consume MCP tool servers)</td></tr>
+<tr><td>MCP</td><td>enables</td><td>tool registries and connectors</td></tr>
+<tr><td>ACP</td><td>enables</td><td>editor-agnostic agents</td></tr>
+<tr><td>MCP</td><td>contrasts-with</td><td>ACP (tool plane vs conversation plane)</td></tr></table>
+<p class="cap">Edges follow the descriptions in the MCP architecture overview and the ACP architecture page. <a class="src" href="#r2">[Architecture]</a> <a class="src" href="#r5">[ACP architecture]</a></p>
+
+<h2>What this does not show</h2>
+<p>Three limits deserve explicit words. <strong>First, the moving target:</strong> MCP's revision history is aggressive — recent versions moved to per-request metadata and deprecated server-initiated requests such as model sampling, and ACP's v2 draft would restructure the prompt lifecycle and permission model, so any wire-level detail here should be re-checked against the current spec before you implement it. <a class="src" href="#r3">[Transport spec]</a> <a class="src" href="#r14">[v2 draft]</a> <strong>Second, remote ACP is unfinished:</strong> stdio dominates both protocols today, and ACP's own documentation marks streamable HTTP for agents as a draft in progress, so cloud-hosted agents are not yet a first-class story. <a class="src" href="#r7">[ACP transports]</a> <strong>Third, this page assumes trust it does not examine:</strong> ACP is explicitly designed for an editor talking to a model you trust, where the editor hands the agent filesystem and MCP access; the permission requests are the control surface, and how strictly an implementation gates them is a security question this page does not answer. <a class="src" href="#r5">[ACP architecture]</a> Also out of scope: model quality, prompt design, and any performance comparison — the protocols only guarantee delivery of messages, not what the model does with them. <a class="src" href="#r2">[Architecture]</a></p>
+
+<h2>Go deeper</h2>
+<ul>
+<li><a href="https://modelcontextprotocol.io/docs/getting-started/intro">MCP: What is Model Context Protocol?</a> — the official plain-language introduction.</li>
+<li><a href="https://agentclientprotocol.com/get-started/introduction">ACP: Introduction</a> — why editors and agents needed a standard.</li>
+<li><a href="https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture">MCP architecture overview</a> — layers, primitives, and a full message walkthrough.</li>
+<li><a href="https://agentclientprotocol.com/protocol/v1/prompt-turn">ACP prompt turn</a> — the lifecycle, with every JSON example.</li>
+<li><a href="https://www.jsonrpc.org/specification">JSON-RPC 2.0 specification</a> — the 30-page foundation under both.</li>
+</ul>
+
+<h2>References</h2>
+<ol class="refs">
+  <li id="r1"><a class="t" href="https://modelcontextprotocol.io/docs/getting-started/intro">MCP — What is the Model Context Protocol?</a><span class="d">Supports the USB-C framing, the N×M integration problem, and the ecosystem of clients (Claude, ChatGPT, VS Code, Cursor). Sections "What is MCP" and "Why does MCP matter".</span></li>
+  <li id="r2"><a class="t" href="https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture">MCP — Architecture overview</a><span class="d">Supports host/client/server roles, the data-layer and transport-layer split, the three server primitives, discovery via server/discover, content blocks, and notification semantics. Sections "Participants", "Layers", "Primitives", "Notifications".</span></li>
+  <li id="r3"><a class="t" href="https://modelcontextprotocol.io/specification/latest/basic/transports">MCP specification — Transports</a><span class="d">Supports stdio and Streamable HTTP bindings, message-direction rules, cancellation per binding, custom transports, and the 2026-07-28 revision date with backward-compatibility notes.</span></li>
+  <li id="r4"><a class="t" href="https://agentclientprotocol.com/get-started/introduction">ACP — Introduction</a><span class="d">Supports the editor/agent decoupling argument, the LSP comparison, and local (stdio) versus remote (HTTP/WebSocket) scenarios.</span></li>
+  <li id="r5"><a class="t" href="https://agentclientprotocol.com/get-started/architecture">ACP — Architecture</a><span class="d">Supports the MCP-friendly design principle, subprocess boot over stdin/stdout, concurrent sessions, bidirectional requests for permissions, forwarding MCP server configuration to agents, and the MCP-proxy pattern.</span></li>
+  <li id="r6"><a class="t" href="https://agentclientprotocol.com/protocol/v1/overview">ACP v1 — Overview</a><span class="d">Supports the baseline method list (initialize, session/new, session/prompt), client methods (fs, terminal, elicitation, request_permission), the message flow, and camelCase conventions.</span></li>
+  <li id="r7"><a class="t" href="https://agentclientprotocol.com/protocol/v1/transports">ACP — Transports</a><span class="d">Supports newline-delimited framing rules, the stdout/stderr contract, streamable HTTP being in draft, and custom transport requirements.</span></li>
+  <li id="r8"><a class="t" href="https://agentclientprotocol.com/protocol/v1/initialization">ACP — Initialization</a><span class="d">Supports the initialize request/response examples, integer protocol version negotiation, client and agent capability objects, and MCP transport capabilities (http, sse).</span></li>
+  <li id="r9"><a class="t" href="https://agentclientprotocol.com/protocol/v1/prompt-turn">ACP — Prompt Turn</a><span class="d">Supports the full turn lifecycle, the session/update variant table, permission requests during tool calls, usage updates, stop reasons, and cancellation rules including the MUST-catch-errors requirement.</span></li>
+  <li id="r10"><a class="t" href="https://www.jsonrpc.org/specification">JSON-RPC 2.0 Specification</a><span class="d">Supports the definitions of request, response, and notification objects, id correlation, and the error object both protocols reuse.</span></li>
+  <li id="r11"><a class="t" href="https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/">MCP joins the Agentic AI Foundation</a><span class="d">Supports the December 9, 2025 donation date, the Linux Foundation / AAIF governance structure, 97M+ monthly SDK downloads, and roughly 10,000 active servers.</span></li>
+  <li id="r12"><a class="t" href="https://zed.dev/acp">Zed — Agent Client Protocol</a><span class="d">Supports the Apache-licensed open standard claim, the editor and agent ecosystem lists, Gemini CLI arriving September 3, 2025, and Claude Code in Zed on October 2, 2025.</span></li>
+  <li id="r13"><a class="t" href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation">Linux Foundation press release — Agentic AI Foundation formed</a><span class="d">Supports the November 2024 open-sourcing date, founding contributions from Anthropic, Block, and OpenAI, and adoption across Claude, Cursor, Copilot, Gemini, VS Code, and ChatGPT.</span></li>
+  <li id="r14"><a class="t" href="https://agentclientprotocol.com/announcements/acp-v2-draft">ACP announcement — v2 available in draft</a><span class="d">Supports the claim that a v2 protocol revision is published in draft form for review alongside stable v1.</span></li>
+</ol>
+<footer>Generated by Philosopher</footer>
+</div></div></body></html>

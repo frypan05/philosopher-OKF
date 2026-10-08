@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Micro and macroeconomics, game theory, trade, development, monetary and fiscal policy, econometrics.
+* **Explain**: Question → model and its assumptions → mechanism as a causal chain → evidence → policy trade-offs; separate positive from normative and nominal from real; show the data series with name, source, and date range.
+* **Sources**: FRED — https://fred.stlouisfed.org/ · World Bank Data — https://data.worldbank.org/ · IMF — https://www.imf.org/
+* **Safety**: Forecasts are not facts — cite the forecaster and date; macro correlation is rarely causal, so name the identification strategy.
+
 # Scope
 
 Consumer and firm choice, markets and market failure, game theory, national accounts, inflation, unemployment, growth, monetary and fiscal policy, international trade, development, labour, behavioral and institutional economics, econometrics.

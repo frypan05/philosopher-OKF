@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Philosophy, world and regional history, literature, religious studies, linguistics, art and music history, cultural studies.
+* **Explain**: Context → claim or event → argument or evidence → objections and rival readings → legacy; keep primary sources apart from interpretation; present each school at its strongest, in its own adherents' words.
+* **Sources**: Stanford Encyclopedia of Philosophy — https://plato.stanford.edu/ · Project Gutenberg — https://www.gutenberg.org/ · Internet Archive — https://archive.org/
+* **Safety**: Be even-handed on religion and politics; quote only short or public-domain passages and name the translation; give uncertain dates as "c.".
+
 # Scope
 
 Philosophy (logic, metaphysics, epistemology, ethics, political philosophy), world and regional history, literature, religious studies, linguistics, art and music history, cultural studies.

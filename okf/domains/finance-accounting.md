@@ -7,6 +7,13 @@ status: draft
 stale_after: 2027-04-08T00:00:00Z
 ---
 
+# Quick card
+
+* **Scope**: Time value of money, valuation, financial statements, capital markets, derivatives, risk, banking, personal finance.
+* **Explain**: Everything is cash flows over time — draw the timeline first, then discount; show how the three statements connect; work one company or loan with round numbers, pairing every return with its risk and every rate with its date.
+* **Sources**: SEC EDGAR — https://www.sec.gov/edgar · IFRS Foundation — https://www.ifrs.org/ · Damodaran Online — https://pages.stern.nyu.edu/~adamodar/
+* **Safety**: Add the note banner: "Educational content, not investment, tax, or accounting advice." Never say what to buy or sell; date every rate and price.
+
 # Scope
 
 Time value of money, valuation, financial statements and accounting standards, capital markets, derivatives, portfolio theory, corporate finance, banking and credit, personal finance, taxation basics.
