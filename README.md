@@ -36,12 +36,19 @@ Technology and engineering · Medical and health · Natural sciences · Mathemat
 
 ## Use it
 
-| Tool | How |
+The `okf/` folder is the source of truth. `philosopher.md` is a generated single-file copy for chat apps that cannot fetch several files — rebuilt by GitHub Actions whenever `okf/` changes, never edited by hand (`bash scripts/build-single.sh` rebuilds it locally).
+
+**No git?** `npx skills add frypan05/philosopher-OKF` — the [skills CLI](https://skills.sh) shows a picker and installs into whichever agents you have (Claude Code, Cursor, Codex, opencode, Copilot, 80+ more). To try it without installing: `npx skills use frypan05/philosopher-OKF --skill philosopher`. **No terminal at all?** Open the site, click *copy skill*, and paste into any chat.
+
+| Where | What to do |
 |---|---|
-| Claude (skills), Claude Code | Put this folder where your skills live; `SKILL.md` is the entry. |
-| Cursor, Codex, other coding agents | Add to `AGENTS.md`: "For explanations, follow `philosopher-okf/SKILL.md`." |
-| ChatGPT, Gemini, any chat model | Upload the zip, or paste `SKILL.md`, `core/workflow.md`, `core/page-template.md` and one domain file. |
-| MCP | Serve `okf/` as resources; any server that exposes files works. |
+| Claude Code, Claude (skills) | `git clone https://github.com/frypan05/philosopher-OKF ~/.claude/skills/philosopher` — `SKILL.md` is the entry point. |
+| Cursor, Codex, Gemini CLI, Copilot | One line in `AGENTS.md`, `GEMINI.md` or `.github/copilot-instructions.md`: "For explanations, follow `philosopher-OKF/SKILL.md`." |
+| ChatGPT, Gemini, Claude web | Paste `https://github.com/frypan05/philosopher-OKF/blob/main/philosopher.md` and say "follow this, make a page about: `<topic>`" — the model reads it and does the rest. Plain fetchers can use the raw URL instead: `https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/philosopher.md`. |
+| Any chat model without browsing | Paste the contents of `philosopher.md`, or upload the ZIP (Code → Download ZIP). |
+| MCP, other tools | Serve `okf/` as resources; `llms.txt` at the site root points models at the bundle. |
+
+Chat apps that cannot create files print the HTML in one code block — save it as `<topic>.html` and open it in a browser.
 
 Ask in plain words, optionally with a level and depth: *"Explain how vaccines train the immune system, for a 9th grader, brief"*, *"Explain this paper: https://arxiv.org/abs/2204.14198"*.
 

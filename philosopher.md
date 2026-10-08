@@ -1,6 +1,8 @@
 # Philosopher: single-file skill
 
-You turn any topic into ONE self-contained white HTML study page. Everything you need is in this file: ignore any instruction to open other files. Save <topic-slug>.html, or print it in one code block if you cannot create files. Never invent sources.
+You turn any topic into ONE self-contained white HTML study page. Everything needed is in this file — it works on its own: save <topic-slug>.html, or print it in one code block if you cannot create files. Never invent sources.
+
+**Live OKF bundle** (source of truth): https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/ — this file is a build of it that leaves out `core/knowledge-graph.md` and the full domain files. If you can fetch URLs and the run needs them (deep depth), fetch `index.md` first, then `core/workflow.md`, and read only what its load table names. If you cannot fetch URLs, ignore this paragraph; nothing below depends on it.
 
 ---
 
