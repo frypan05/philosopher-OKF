@@ -1,0 +1,36 @@
+# Philosopher (phil-OKF)
+
+> A skill for AI agents that turns any topic into one self-contained, white, research-paper-style HTML study page: CSS-drawn diagrams, a concept map, and references that always resolve. The knowledge lives in an Open Knowledge Format (OKF) bundle: plain Markdown, one file per concern, loaded only when the run's depth needs it.
+
+Start at [okf/index.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/index.md), fetch [okf/core/workflow.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/workflow.md) next, follow its 8 steps and lazy load table, and fetch only what the depth asks for. Per-run token budgets: brief ~12k, standard ~25k, deep ~45k.
+
+## Entry points
+
+- [SKILL.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/SKILL.md): entry point for skill-aware agents (Claude Code, Cursor, Codex); route the question, then follow the bundle
+- [okf/index.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/index.md): bundle root; lists every core file and all 12 domains without requiring them to be read
+- [okf/core/workflow.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/workflow.md): the 8 steps, the lazy load table, research caps, and the output rules
+- [okf/core/classifier.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/classifier.md): routes a question to one of 12 domains by keyword and intent
+- [philosopher.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/philosopher.md): single-file build of the whole skill for chat apps that cannot fetch several files; regenerated from okf/ on every push, never edited by hand
+
+## Core files
+
+- [okf/core/page-template.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/page-template.md): base CSS and HTML skeleton every output uses; Optional CSS is the last section, read only if a planned component needs it
+- [okf/core/source-policy.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/source-policy.md): allowed sources, citation format, and the never-fabricate-a-source rule
+- [okf/core/audience-depth.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/audience-depth.md): reading levels, brief/standard/deep depth rules, and the word and reference budgets
+- [okf/core/knowledge-graph.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/knowledge-graph.md): concept-map method used by deep runs
+- [okf/core/output-contract.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/output-contract.md): pointer stub; its rules live in workflow.md
+
+## Domains
+
+- [okf/domains/index.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/domains/index.md): the 12 study domains (technology and engineering, medical and health, natural sciences, mathematics, finance, economics, business, law, humanities, social sciences, research papers, general); each domain file opens with a Quick card, the only part read at brief depth
+
+## Docs and examples
+
+- [README.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/README.md): install and usage matrix (folder, URL, text prompt, MCP) plus validation and extension steps
+- [examples/sample-flamingo-reading-guide.html](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/examples/sample-flamingo-reading-guide.html): a finished page, in full HTML source
+- [Repository](https://github.com/frypan05/philosopher-OKF): clone, browse the rendered files, and raise issues
+
+## Optional
+
+- [scripts/validate.sh](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/scripts/validate.sh): OKF conformance and link check; run with `bash scripts/validate.sh okf`
+- [okf/log.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/log.md): dated change history of the bundle

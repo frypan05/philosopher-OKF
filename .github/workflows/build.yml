@@ -1,0 +1,12 @@
+name: build-single
+on: { push: { paths: ["okf/**", "scripts/build-single.sh"] } }
+permissions: { contents: write }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/build-single.sh philosopher.md
+      - run: |
+          git config user.name github-actions; git config user.email actions@github.com
+          git add philosopher.md; git diff --staged --quiet || (git commit -m "Rebuild philosopher.md" && git push)
