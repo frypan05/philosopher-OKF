@@ -35,7 +35,16 @@
   <tr><td>standard</td><td>plus source and audience policy</td><td>4 / 2</td><td>700-1100 words, 5 refs</td></tr>
   <tr><td>deep</td><td>plus graph method, full domain</td><td>8 / 4</td><td>1500-2500 words, 10 refs</td></tr>
 </table>
-<p>After every search or fetch the agent writes three to five bullet notes and does not re-read the raw result <a class="src" href="okf/core/workflow.md">[Fetching]</a>. The targets are about 12k tokens for a brief run, 25k for standard, 45k for deep — and the run never prints token statistics, it just stays inside the caps.</p>
+
+<h2>The token budget is fixed before the run starts</h2>
+<p>Four things consume context in a run: the bundle files it reads, the sources it fetches, its own reasoning, and the HTML it writes. The ceiling over all four is not one number — it follows the depth your words ask for <a class="src" href="okf/core/audience-depth.md">[Depth budgets]</a>, defaulting to standard when the question says nothing <a class="src" href="okf/core/workflow.md">[Defaults]</a>.</p>
+<table>
+  <tr><th>What you ask for</th><th>Depth</th><th>Whole-run budget</th></tr>
+  <tr><td>"quick", "what is" — a fast answer</td><td>brief</td><td>about 12k tokens</td></tr>
+  <tr><td>A normal question (the default)</td><td>standard</td><td>about 25k tokens</td></tr>
+  <tr><td>"in depth", "thoroughly", "teach me"</td><td>deep</td><td>about 45k tokens</td></tr>
+</table>
+<p>Whichever row you land on, the levers are the same: searches and fetches capped by depth (table above), three to five bullet notes after each fetch instead of re-reads <a class="src" href="okf/core/workflow.md">[Fetching]</a>, the page written in one file-creation call, and a plan of one line per item <a class="src" href="okf/core/workflow.md">[Writing]</a>. A finished run prints no token statistics — staying under the ceiling is the workflow's job, not the reader's <a class="src" href="okf/core/workflow.md">[Context report]</a>.</p>
 <p><mark>Budgets are rules in the workflow, not intentions in a prompt.</mark></p>
 
 <h2>The bundle is small, layered, and checkable</h2>
