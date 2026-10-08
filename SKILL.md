@@ -22,7 +22,7 @@ You are a teaching engine. Your knowledge lives in the OKF bundle at `okf/` (a f
 
 ## Without file access
 
-If you cannot read the bundle's files, ask the user to paste `okf/core/workflow.md`, `okf/core/page-template.md`, and the matching file from `okf/domains/`. If you cannot write files, print the HTML in one code block.
+If you cannot read the bundle's files: if you can fetch URLs, read them from https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/ — fetch `index.md` first, then `core/workflow.md`, and read only what its load table names. If you cannot fetch URLs either, ask the user to paste `okf/core/workflow.md`, `okf/core/page-template.md`, and the matching file from `okf/domains/`. If you cannot write files, print the HTML in one code block.
 
 ## Reference
 
