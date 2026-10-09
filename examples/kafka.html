@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kafka in High-Scale Systems</title><style>:root{--ink:#1d1c1b;--mut:#6c6863;--line:#e6e3de;--hl:#fde7c4;--ac:#5b4fc7;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--serif:Charter,Georgia,serif}*{box-sizing:border-box}body{margin:0;background:#f6f6f5;color:var(--ink);font:17px/1.85 var(--serif)}.sheet{max-width:56rem;margin:0 auto;background:#fff;padding:3.5rem 1.25rem 4rem}.col{max-width:34rem;margin:0 auto}header{text-align:center}.eyebrow,.cap,figcaption,th,.node,.src,.kg h4{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em}.eyebrow{font-size:.62rem;color:var(--mut);text-align:center}h1{font-weight:400;font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.12;margin:1rem 0 1.4rem}.deck{color:var(--mut);font-size:.95rem;line-height:1.9;margin:0 auto 1.3rem}.orig{font:.7rem var(--mono);text-decoration:none;border-bottom:1px solid var(--line)}hr{border:0;border-top:1px solid var(--mut);width:1.2rem;margin:3rem auto}h2{font-size:1rem;margin:3.2rem 0 1rem}h3{font-size:.95rem;font-style:italic;margin:2rem 0 .6rem}p,li,dd{font-size:.95rem}p{margin:0 0 1.25rem;text-align:justify;hyphens:auto}mark{background:var(--hl);color:inherit;padding:.1em .2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}a{color:inherit}a.src{font-size:.58rem;color:var(--mut);text-decoration:none;border-bottom:1px dotted var(--mut);white-space:nowrap}.note{font:.78rem/1.6 var(--mono);color:var(--mut);border-left:2px solid var(--line);padding:.2rem .8rem;margin:1.5rem 0}figure{margin:2.5rem 0;text-align:center}figcaption,.cap{font-size:.6rem;line-height:1.5;color:var(--mut);margin-top:.8rem}.flow{display:flex;flex-wrap:wrap;justify-content:center;gap:1.8rem 1.6rem;margin:1rem 0}.node{position:relative;border:1px solid #cfcaf0;background:#f3f2fc;border-radius:8px;padding:.6rem .75rem;font-size:.62rem;line-height:1.4;min-width:6.5rem}.node small{display:block;color:var(--mut);font-size:.55rem}.node.in{border-color:#f0c9a0;background:#fdf1e3}.node.fz{border-color:#d9d6d1;background:#faf9f8}.node:not(:last-child):after{content:"\2192";position:absolute;right:-1.25rem;top:50%;transform:translateY(-50%);color:var(--ac);font-size:.9rem}table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.5rem 0}th,td{padding:.5rem .6rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:.58rem;color:var(--mut)}.kg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin:1.5rem 0}.kg>div{display:flex;flex-direction:column;gap:.5rem;position:relative}.kg>div+div:before{content:"\2192";position:absolute;left:-1.2rem;top:50%;color:var(--ac)}.kg h4{margin:0;font-size:.58rem;color:var(--mut);text-align:center}.kg a{border:1px solid var(--line);border-radius:6px;padding:.4rem .6rem;font-size:.8rem;text-align:center;text-decoration:none}.kg .me{border-color:var(--ac);background:#f3f2fc}code{font-family:var(--mono);font-size:.85em}.refs{list-style:none;counter-reset:r;padding:0;margin:1.5rem 0}.refs li{counter-increment:r;position:relative;padding:1rem 0 1rem 2.2rem;border-top:1px solid var(--line)}.refs li:before{content:counter(r) ".";position:absolute;left:0;top:1.2rem;font:.6rem var(--mono);color:var(--mut)}.refs a.t{font-weight:700;font-size:.9rem;text-decoration:none}.refs .d{display:block;font-size:.75rem;line-height:1.6;color:var(--mut)}footer{text-align:center;font:.6rem var(--mono);color:var(--mut);margin-top:3rem}</style></head>
+<body><div class="sheet"><div class="col">
+
+<header>
+  <div class="eyebrow">TECHNOLOGY · ENGINEERING</div>
+  <h1>Kafka in High-Scale Scaling</h1>
+  <p class="deck">Apache Kafka acts as a distributed commit log, enabling hyper-scale platforms like Zomato and Blinkit to decouple services and process millions of real-time events. It ensures systems remain responsive even during extreme traffic spikes.</p>
+</header>
+<hr>
+
+<figure><div class="flow">
+  <div class="node in">Producer<small>Order/Log event</small></div>
+  <div class="node">Kafka Topic<small>Partitioned Log</small></div>
+  <div class="node">Consumer<small>Analytics/Delivery</small></div>
+</div>
+<figcaption>Simplified asynchronous event-driven flow in hyper-scale applications.</figcaption></figure>
+
+<h2>Decoupling through asynchronous messaging</h2>
+<p>In massive platforms, synchronous communication (like direct REST API calls between services) creates tight coupling and bottlenecks. If an "Order Service" calls an "Email Service" directly, a delay in the email system slows down the order. Kafka introduces a buffer. <a class="src" href="#r1">[Introduction]</a></p>
+<p><mark>By writing events to a distributed log instead of calling other services directly, systems can scale individual components independently.</mark></p>
+
+<h2>Handling traffic spikes via partitioning</h2>
+<p>Zomato or Blinkit face massive, unpredictable surges (e.g., Friday night orders). Kafka scales by partitioning topics across multiple servers (brokers). Each partition can be processed in parallel by different consumer instances. This horizontal scaling allows the system to distribute the load of millions of events across a cluster, preventing any single machine from becoming a failure point. <a class="src" href="#r2">[Architecture]</a></p>
+
+<h2>Data persistence and replayability</h2>
+<p>Unlike standard message queues that delete data upon consumption, Kafka acts as a durable log. If a consumer service (like a fraud detection engine) fails, it can "rewind" the log and re-read events to catch up. This capability is critical for platforms where data integrity during delivery operations is non-negotiable. <a class="src" href="#r3">[Log Compaction]</a></p>
+
+<h2>How the ideas connect</h2>
+<div class="kg">
+  <div><h4>Scale</h4><a href="#">Partitioning</a><a href="#">Cluster</a></div>
+  <div><h4>Flow</h4><a href="#">Producer</a><a class="me" href="#">Kafka</a><a href="#">Consumer</a></div>
+  <div><h4>Reliability</h4><a href="#">Persistence</a><a href="#">Replication</a></div>
+</div>
+
+<table>
+  <tr><th>Concept</th><th>Role</th></tr>
+  <tr><td>Producer</td><td>Publishes stream events (e.g., "OrderPlaced").</td></tr>
+  <tr><td>Topic</td><td>The category/feed to which events are sent.</td></tr>
+  <tr><td>Partition</td><td>The unit of parallelism; logs split across nodes.</td></tr>
+  <tr><td>Consumer Group</td><td>Scalable consumption of messages.</td></tr>
+</table>
+
+<h2>What this does not show</h2>
+<p>This overview does not cover the operational complexity of managing a Kafka cluster, such as Zookeeper (or KRaft) management, disk I/O tuning, or the specific challenges of ensuring strict message ordering in a distributed environment, which requires careful partitioning keys.</p>
+
+<h2>Go deeper</h2>
+<ul>
+  <li><a href="https://kafka.apache.org/documentation/">Apache Kafka Documentation</a>: The definitive technical specification.</li>
+  <li><a href="https://www.confluent.io/blog/">Confluent Blog</a>: Practical engineering insights on scaling event-streaming.</li>
+</ul>
+
+<h2>References</h2>
+<ol class="refs">
+  <li id="r1"><a class="t" href="https://kafka.apache.org/documentation/#introduction">Kafka Introduction</a><span class="d">Explains the core concept of the distributed streaming platform.</span></li>
+  <li id="r2"><a class="t" href="https://kafka.apache.org/documentation/#design">Kafka Design Principles</a><span class="d">Details the architecture of topics, partitions, and horizontal scaling.</span></li>
+  <li id="r3"><a class="t" href="https://kafka.apache.org/documentation/#persistence">Persistence and Durability</a><span class="d">Covers how Kafka manages long-term event storage and replay.</span></li>
+</ol>
+<footer>Generated by phil-OKF</footer>
+</div></div></body></html>
