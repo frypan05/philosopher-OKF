@@ -16,7 +16,7 @@ philosopher-okf/
 ├── okf/                      # the OKF bundle
 │   ├── index.md              # root index (declares okf_version 0.2)
 │   ├── log.md                # change history
-│   ├── core/                 # workflow, classifier, contract, template, sources, depth, graph
+│   ├── core/                 # workflow, classifier, contract, template, writing, sources, depth, graph
 │   └── domains/              # 12 study domains, one file each
 ├── scripts/validate.sh       # OKF conformance + link check
 └── examples/

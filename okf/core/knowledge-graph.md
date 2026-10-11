@@ -48,4 +48,7 @@ Then a relation table so each edge is explicit and checkable:
 * Every node appears in the text at least once.
 * No node without an edge. No edge without a relation label.
 * Edges are claims: they need the same sources as any other claim.
+* Nodes are named concepts that exist in the sources (Heap, Breadth-first search, Big-O cost model), never a thesis the page invented ("Access rule decides the structure"). The center node is the user's topic.
+* One edge per pair. Do not add the inverse ("Heap requires Array index arithmetic" and "Array index arithmetic enables Heap" is one edge).
+* Check each edge against the page's own text. If a section says Dijkstra's algorithm orders its frontier with a heap, the edge is "Heap applied-in Dijkstra's algorithm", not "Queue applied-in Dijkstra's algorithm".
 * Use each domain file's "Graph seeds" section as a starting vocabulary, not a limit. Example: [technology and engineering](/domains/technology-engineering.md).

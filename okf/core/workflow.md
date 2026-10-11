@@ -14,17 +14,17 @@ stale_after: 2027-04-08T00:00:00Z
 3. **Load** only what the depth needs, using the lazy [load table](#load-table-lazy) below.
 4. **Research** within the caps in [Token budget](#token-budget). Write notes, never re-read raw results.
 5. **Plan** the graph: a node list of 6 to 12 items, one line each. No long planning prose.
-6. **Write** one HTML file in a single file-creation call, using the base CSS and skeleton in the [page template](/core/page-template.md). Add an Optional CSS block only for a component the page uses.
-7. **Self-check** against the [checklist](#self-check-5-lines). Fix small errors with targeted edits; never regenerate the file.
+6. **Write** one HTML file in a single file-creation call, using the base CSS and skeleton in the [page template](/core/page-template.md) and the prose rules in [writing rules](/core/writing-rules.md). Add an Optional CSS block only for a component the page uses.
+7. **Self-check** against the [checklist](#self-check-6-lines), including the prose self-check in writing rules. Fix small errors with targeted edits; never regenerate the file.
 8. **Reply** in at most 2 sentences: file path and what it covers. Never paste the page into chat.
 
 # Load table (lazy)
 
 | Depth | Read |
 |---|---|
-| brief | [page template](/core/page-template.md) (base CSS, skeleton, components; open `# Optional CSS` at the end only if a planned component needs it) + primary domain's `# Quick card` only |
+| brief | [page template](/core/page-template.md) (base CSS, skeleton, components; open `# Optional CSS` at the end only if a planned component needs it) + [writing rules](/core/writing-rules.md) + primary domain's `# Quick card` only |
 | standard | brief set + [source policy](/core/source-policy.md) + [audience and depth](/core/audience-depth.md) + primary domain's `# Quick card` only |
-| deep | standard set + [knowledge graph method](/core/knowledge-graph.md) + **full** primary domain file, plus secondary domain's `# Quick card` |
+| deep | standard set + [knowledge graph method](/core/knowledge-graph.md) + [writing detection](/core/writing-detection.md) + **full** primary domain file, plus secondary domain's `# Quick card` |
 
 * The classifier is read at every depth (step 2); it is not listed in the table.
 * **Quick card only** means: read the domain file from the top through the end of `# Quick card` (roughly its first 15 lines) and stop. Deep reads the whole file.
@@ -60,11 +60,12 @@ stale_after: 2027-04-08T00:00:00Z
 * **No filler**: do not repeat a definition, a diagram, or a citation, and do not add a summary section that restates the page.
 * **Chat reply**: at most 2 sentences, plus one more sentence only if sources could not be verified.
 
-# Self-check (5 lines)
+# Self-check (6 lines)
 
 - Valid HTML5, `lang`, meta viewport, `<title>`; white background with high contrast; reads correctly at 375 px and prints cleanly.
 - Every non-obvious claim has a `[Section]` source tag that resolves to a References entry; every entry is cited once; no invented URL, DOI, author, or quote.
-- Each term defined at first use; at least one visual or worked example.
+- Each term defined at first use; each concept has a worked trace with real values, an exact cost or number, and one failure case.
+- Prose passes the self-check in [writing rules](/core/writing-rules.md): no em dashes, no banned words, no "X is not Y, it is Z", no closing aphorisms, headings that name content.
 - Standard and deep pages carry a "What this does not show" section; domain note banners present where the domain file requires one.
 - File opens with no network except optional images, and a broken image hides itself.
 
@@ -81,4 +82,5 @@ After finishing, do **not** print token statistics or a run report. Stay inside 
 # Rules that never bend
 
 * One file. White theme. No fabricated sources.
+* Prose is literal, specific, and sourced, per [writing rules](/core/writing-rules.md).
 * If the question is unsafe or illegal to answer in detail, say so in the page and explain the safe, general version.

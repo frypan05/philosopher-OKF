@@ -18,6 +18,8 @@ Start at [okf/index.md](https://raw.githubusercontent.com/frypan05/philosopher-O
 - [okf/core/source-policy.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/source-policy.md): allowed sources, citation format, and the never-fabricate-a-source rule
 - [okf/core/audience-depth.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/audience-depth.md): reading levels, brief/standard/deep depth rules, and the word and reference budgets
 - [okf/core/knowledge-graph.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/knowledge-graph.md): concept-map method used by deep runs
+- [okf/core/writing-rules.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/writing-rules.md): prose rules and self-check, read at every depth
+- [okf/core/writing-detection.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/writing-detection.md): word lists, heading anti-patterns, and structural thresholds, read at deep depth
 - [okf/core/output-contract.md](https://raw.githubusercontent.com/frypan05/philosopher-OKF/main/okf/core/output-contract.md): pointer stub; its rules live in workflow.md
 
 ## Domains

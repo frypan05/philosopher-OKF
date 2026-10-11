@@ -1,5 +1,13 @@
 # Update Log
 
+## 2026-10-11
+* **Writing rules**: Added [writing rules](/core/writing-rules.md), read at every depth: five per-sentence tests (portability, literal, evidence, kicker, trace), required content per concept, banned words and patterns, and a prose self-check. Adapted from the no-ai-slop skill.
+* **Writing detection**: Added [writing detection](/core/writing-detection.md), read at deep depth: word and phrase lists, heading anti-patterns, hedging and structure thresholds, exclusion zones.
+* **Template**: Removed "headings are claims" and "say what the thing is not" from the writing style, which produced aphorism headings and "X is not Y" sentences. Marks now cover one definition, rule, exact cost, or threshold per section.
+* **Workflow**: Load table, step 6, step 7, and the self-check (now 6 lines) reference the writing rules.
+* **Technology domain**: Exact costs with assumptions, named failure inputs, and per-concept traces before comparison.
+* **Graph**: Nodes must be named concepts, one edge per pair, edges checked against the page text.
+
 ## 2026-10-08
 * **Init**: Created the bundle with 7 core concepts and 12 study domains.
 * **Create**: Added the [page template](/core/page-template.md) modelled on a research-paper reading guide.

@@ -9,7 +9,7 @@ stale_after: 2027-04-08T00:00:00Z
 
 # Design intent
 
-A calm paper-style page: serif body, tiny uppercase mono labels, centered title, hero diagram, claim-style headings, amber highlights on sentences worth remembering, and a references list that says what each entry supports. Copy the base CSS verbatim, then fill the skeleton.
+A calm paper-style page: serif body, tiny uppercase mono labels, centered title, hero diagram, literal headings that name the content or state a checkable fact, amber highlights on one definition, rule, or exact cost per section, and a references list that says what each entry supports. Copy the base CSS verbatim, then fill the skeleton.
 
 # Base CSS (paste into one `<style>` tag)
 
@@ -31,17 +31,17 @@ Bars, timelines, formulas, collapsibles, code blocks, images, and print styles l
 <header>
   <div class="eyebrow">DOMAIN · LEVEL (or: AUTHORS · VENUE YEAR for a paper)</div>
   <h1>TOPIC AS A CLEAR TITLE</h1>
-  <p class="deck">Two or three sentences: the plain-language answer first, then what the page will show.</p>
+  <p class="deck">Two or three literal sentences: what the topic is, with its main numbers, then what the page traces. No invented thesis.</p>
   <a class="orig" href="PRIMARY_SOURCE_URL">Read the original source ↗</a>
 </header>
 <hr>
 
 <figure><div class="flow"><!-- 3 to 5 .node items --></div>
-<figcaption>One-line statement of the main idea</figcaption></figure>
+<figcaption>One-line description of what the figure shows</figcaption></figure>
 
-<h2>Claim-style heading that states the point</h2>
-<p>Intuition first. Define terms once. <a class="src" href="#r1">[Section 2.1]</a></p>
-<p><mark>One sentence the reader should remember.</mark></p>
+<h2>Heading that names the content or states a checkable fact</h2>
+<p>Literal definition, then one worked trace with real values. Define terms once. <a class="src" href="#r1">[Section 2.1]</a></p>
+<p><mark>One definition, rule, exact cost, or threshold.</mark></p>
 
 <!-- 2 to 5 sections like the one above -->
 
@@ -85,10 +85,13 @@ Bars, timelines, formulas, collapsibles, code blocks, images, and print styles l
 
 # Writing style
 
-* Headings are claims ("Attention is a controlled read"), not labels ("Attention").
-* Short paragraphs. One idea each. At most one `<mark>` per section.
-* Say what the thing is not, as well as what it is.
-* Prefer a concrete example over a definition when both fit.
+The full rules are in [writing rules](/core/writing-rules.md), read at every depth. The short version:
+
+* Headings name the content or state a checkable fact ("Binary heap: O(1) minimum, O(log n) insert and extract"). No metaphors, personification, or teasers.
+* Short paragraphs. One idea each. At most one `<mark>` per section, and only on a definition, rule, exact cost, or threshold.
+* Define a thing by what it is and does. Do not define it by what it is not, and do not write "X is not Y, it is Z".
+* Give a worked trace with real values before any generalization. A trace beats a definition when both fit.
+* End each section on a fact, a limit, or a cost. No closing aphorism.
 
 # Optional CSS
 

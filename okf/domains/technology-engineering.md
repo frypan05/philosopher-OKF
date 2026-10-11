@@ -10,7 +10,7 @@ stale_after: 2027-04-08T00:00:00Z
 # Quick card
 
 * **Scope**: Computing, AI and machine learning, software, networks, security, electrical, mechanical and civil engineering, robotics.
-* **Explain**: Trace one concrete input end to end before generalizing; separate the specification (what must hold) from the implementation (how a system does it); state the version and date for anything that changes fast.
+* **Explain**: Trace one concrete input end to end with real values before generalizing; separate the specification (what must hold) from the implementation (how a system does it); give each operation its exact cost and the condition it holds under; state the version and date for anything that changes fast.
 * **Sources**: MDN Web Docs — https://developer.mozilla.org/ · RFC Editor — https://www.rfc-editor.org/ · NIST — https://www.nist.gov/
 * **Safety**: Teach attacks conceptually with defenses, never working exploits; safety-critical designs need a licensed engineer.
 
@@ -23,6 +23,9 @@ Computer science (algorithms, data structures, operating systems, databases, net
 * Trace **one concrete input end to end** (a request, a packet, a training example, a load on a beam) before generalizing.
 * Separate the **specification** (what must hold) from the **implementation** (how a given system does it).
 * Give every design a **trade-off table**: what it gains, what it costs, when it fails.
+* State costs as exact big-O with the assumption beside them (worst case or amortized, adjacency list or matrix, 0-based or 1-based indexing) and name the input that triggers each failure case (a binary search tree fed sorted keys degrades to O(n)).
+* When a topic names several concepts (five data structures, four protocols), give each its own trace and cost table first, then compare. Do not organize the page around a slogan or a single unifying metaphor.
+* Define an operation by what it returns and what it costs. Never by a comparison to an object, and never with a sentence of the form "X is not Y, it is Z".
 * State **version and date** for anything that changes fast (frameworks, models, standards).
 * Show code only when it teaches: at most 15 lines in `<pre><code>`, runnable, commented sparingly.
 * Engineering topics: units on every number, a worked calculation, and the safety factor or margin.

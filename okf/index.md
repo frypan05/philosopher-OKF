@@ -12,6 +12,8 @@ okf_version: "0.2"
 * [Page template](core/page-template.md) - The research-paper UI: full CSS, HTML skeleton, and diagram components.
 * [Source policy](core/source-policy.md) - Allowed sources, citation format, and the never-fabricate rule.
 * [Audience and depth](core/audience-depth.md) - Reading levels (school to PhD) and brief / standard / deep budgets.
+* [Writing rules](core/writing-rules.md) - Literal, specific prose; banned words and patterns; the prose self-check (read at every depth).
+* [Writing detection](core/writing-detection.md) - Word lists, heading anti-patterns, and structural thresholds for the deep-depth self-check.
 * [Knowledge graph method](core/knowledge-graph.md) - How to build and render the concept map in plain HTML/CSS.
 
 # Domains (read one, rarely two)
